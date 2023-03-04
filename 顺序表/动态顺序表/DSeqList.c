@@ -90,6 +90,11 @@ void DSeqListPrint(DSeqList* dsl)
 		printf("%d ", dsl->arry[i]);
 	}
 }
+void DSeqListDestroy(DSeqList* dsl)
+{
+	free(dsl->arry);
+	dsl->arry = NULL;
+}
 int main()
 {
 	DSeqList dsl;
@@ -120,6 +125,9 @@ int main()
 
 	//打印动态顺序表
 	DSeqListPrint(&dsl);
+
+	//顺序表的删除
+	DSeqListDestroy(&dsl);
 
 	return 0;
 }
