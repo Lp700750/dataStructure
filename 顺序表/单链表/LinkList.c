@@ -103,6 +103,18 @@ void ListPrint(List** pplist)
 		tail = tail->pNext;
 	}
 }
+void ListDestroy(List** pplist)
+{
+	assert(pplist);
+	List* current = *pplist;
+	while (current)
+	{
+		List* Next = current->pNext;
+		free(current);
+		current = NULL;
+		current = Next;
+	}
+}
 int main()
 {
 	List* plist=NULL;
@@ -129,6 +141,9 @@ int main()
 
 	//打印节点
 	ListPrint(&plist);
+
+	//释放链表
+	ListDestroy(&plist);
 
 	return 0;
 }
